@@ -55,7 +55,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
           <UserPlus className="w-8 h-8 text-green-600 mx-auto" />
         </div>
         <h2 className="text-2xl font-bold text-gray-900">Create Account</h2>
-        <p className="text-gray-600 mt-2">Register for Kerala Police Crime Portal</p>
+        <p className="text-gray-600 mt-2">Register for KALAMESSARY Crime Portal</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">

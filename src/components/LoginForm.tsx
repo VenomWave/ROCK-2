@@ -33,7 +33,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
           <Shield className="w-8 h-8 text-blue-600 mx-auto" />
         </div>
         <h2 className="text-2xl font-bold text-gray-900">Welcome Back</h2>
-        <p className="text-gray-600 mt-2">Sign in to your Kerala Police account</p>
+        <p className="text-gray-600 mt-2">Sign in to your KALAMESSARY account</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
