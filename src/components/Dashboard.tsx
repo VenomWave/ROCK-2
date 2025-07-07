@@ -6,10 +6,10 @@ const Dashboard: React.FC = () => {
   const { user } = useAuth();
 
   const stats = [
-    { label: 'Total Reports', value: '12', icon: FileText, color: 'blue', bgColor: 'bg-blue-50', iconColor: 'text-blue-600', textColor: 'text-blue-900' },
-    { label: 'Pending', value: '4', icon: Clock, color: 'yellow', bgColor: 'bg-yellow-50', iconColor: 'text-yellow-600', textColor: 'text-yellow-900' },
-    { label: 'Resolved', value: '7', icon: CheckCircle, color: 'green', bgColor: 'bg-green-50', iconColor: 'text-green-600', textColor: 'text-green-900' },
-    { label: 'Under Investigation', value: '1', icon: AlertTriangle, color: 'red', bgColor: 'bg-red-50', iconColor: 'text-red-600', textColor: 'text-red-900' },
+    { label: 'Total', value: '12', icon: FileText, bg: 'bg-blue-50', icon: 'text-blue-600', text: 'text-blue-900' },
+    { label: 'Pending', value: '4', icon: Clock, bg: 'bg-yellow-50', icon: 'text-yellow-600', text: 'text-yellow-900' },
+    { label: 'Resolved', value: '7', icon: CheckCircle, bg: 'bg-green-50', icon: 'text-green-600', text: 'text-green-900' },
+    { label: 'Active', value: '1', icon: AlertTriangle, bg: 'bg-red-50', icon: 'text-red-600', text: 'text-red-900' },
   ];
 
   const recentCases = [
@@ -58,31 +58,31 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="p-6 space-y-8 bg-gray-50 min-h-screen">
-      <div className="flex items-center justify-between">
+    <div className="p-4 space-y-6 bg-gray-50 min-h-screen">
+      <div className="flex items-center justify-between mb-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-          <p className="text-lg text-gray-600">Welcome back, {user?.name}</p>
+          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+          <p className="text-gray-600">Welcome back, {user?.name}</p>
         </div>
-        <div className="flex items-center space-x-2 text-sm text-gray-600 bg-white px-4 py-2 rounded-lg shadow-sm border">
+        <div className="flex items-center space-x-2 text-sm text-gray-600">
           <TrendingUp size={16} />
           <span>Updated just now</span>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-            <div key={stat.label} className={`${stat.bgColor} p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`}>
+            <div key={stat.label} className={`${stat.bg} p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow`}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-1">{stat.label}</p>
-                  <p className={`text-3xl font-bold ${stat.textColor}`}>{stat.value}</p>
+                  <p className="text-xs font-medium text-gray-600">{stat.label}</p>
+                  <p className={`text-2xl font-bold ${stat.text}`}>{stat.value}</p>
                 </div>
-                <div className={`p-4 rounded-full bg-white shadow-md`}>
-                  <Icon className={stat.iconColor} size={28} />
+                <div className="p-2 rounded-full bg-white">
+                  <Icon className={stat.icon} size={20} />
                 </div>
               </div>
             </div>
@@ -91,58 +91,51 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Recent Cases */}
-      <div className="bg-white rounded-xl shadow-lg border border-gray-100">
-        <div className="p-6 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-gray-900">Recent Cases</h2>
-          <p className="text-gray-600 mt-1">Your latest crime reports and their status</p>
+      <div className="bg-white rounded-lg shadow-sm border">
+        <div className="p-4 border-b">
+          <h2 className="text-lg font-semibold text-gray-900">Recent Cases</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b border-gray-200">
+            <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Case ID
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Title
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  Category
-                </th>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Status
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Priority
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Date
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-100">
+            <tbody className="divide-y divide-gray-200">
               {recentCases.map((case_) => (
                 <tr key={case_.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-blue-600">
+                  <td className="px-4 py-3 text-sm font-medium text-blue-600">
                     {case_.id}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td className="px-4 py-3 text-sm text-gray-900">
                     {case_.title}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                    {case_.category}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(case_.status)}`}>
+                  <td className="px-4 py-3">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(case_.status)}`}>
                       {case_.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${getPriorityColor(case_.priority)}`}>
+                  <td className="px-4 py-3">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityColor(case_.priority)}`}>
                       {case_.priority}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-700">
+                  <td className="px-4 py-3 text-sm text-gray-500">
                     {case_.date}
                   </td>
                 </tr>
