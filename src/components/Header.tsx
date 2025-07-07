@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
                 <Shield size={32} className="text-blue-200" />
               </div>
               <div>
-                <h1 className="text-xl font-bold">KALAMESSARY</h1>
+                <h1 className="text-xl font-bold">KOCHI</h1>
                 <p className="text-blue-200 text-sm">Crime Registration Portal</p>
               </div>
             </div>

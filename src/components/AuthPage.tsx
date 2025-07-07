@@ -11,7 +11,7 @@ const AuthPage: React.FC = () => {
       
       <div className="relative z-10 w-full max-w-4xl">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">KALAMESSARY</h1>
+          <h1 className="text-4xl font-bold text-white mb-2">KOCHI</h1>
           <p className="text-blue-200 text-lg">Crime Registration Portal</p>
           <p className="text-blue-100 text-sm mt-2">Serving the people of Kerala with integrity and dedication</p>
         </div>
